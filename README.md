@@ -23,7 +23,7 @@ Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FrontEnd Junior.
    </div>
   
   <div>
-    <p>DevOps:</p>
+    <p>Ferramentas:</p>
     <img src="https://cdn.worldvectorlogo.com/logos/linux-tux.svg" alt="Linux" width="30px"/>
     <img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="GIT" width="30px"/>
   </div>
