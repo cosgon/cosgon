@@ -10,7 +10,10 @@ Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FrontEnd Junior.
  Após isso retornei a estudar programação por meio de um amigo da faculdade, entrei para a Kenzie Academy que me relembrou como eu gostava de codar.
 </p>
 
-[![Guilherme's GitHub stats](https://github-readme-stats.vercel.app/api?username=cosgon&count_private=true&show_icons=true&theme=react)](https://github.com/cosgon/github-readme-stats)
+<div>
+  <img src="https://github-readme-stats.vercel.app/api?username=cosgon&count_private=true&show_icons=true&theme=react" alt="Guilherme's GitHub stats" height="245px"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=cosgon&layout=default&theme=react" alt="Guilherme's Top Langs" />
+</div>
 
 
 ## Tecnologias e Linguagens:
