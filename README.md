@@ -29,20 +29,18 @@ Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FrontEnd Junior.
    </div>
   
   <div>
+    <p>BackEnd:</p>
+    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" width="30px"/>
+    <img src="https://cdn.worldvectorlogo.com/logos/flask.svg" alt="Flask" width="25px"/>
+   </div>
+  
+  <div>
     <p>Ferramentas:</p>
     <img src="https://cdn.worldvectorlogo.com/logos/linux-tux.svg" alt="Linux" width="30px"/>
     <img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="GIT" width="30px"/>
   </div>
 </section>
 
-## Estudos Atuais:
-<section>
-  <div>
-    <p>BackEnd:</p>
-    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" width="30px"/>
-    <img src="https://cdn.worldvectorlogo.com/logos/flask.svg" alt="Flask" width="25px"/>
-   </div>
-</section>
 
 ## Hobbies:
 :guitar: Música
