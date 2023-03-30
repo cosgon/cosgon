@@ -3,7 +3,7 @@
 <p>
 Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FrontEnd Junior. 
   <br>
- Atualmente sou um dos Devs da Kenzie Academy Brasil, a caminho de me tornar um fullstack. Descobri a programação quando tinha 12 anos e fui apresentado ao trio JavaScript, HTML e CSS, fiz os primeiros projetos, mas acabei deixando um pouco de lado, principalmente quando foi apresentado o Python, com algumas funções básicas mas que me deixaram com muita vontade de conhecer mais sobre a programação, principalmente após ouvir a frase: "O mundo da programação é um lugar de infinitas possibilidades onde podemos fazer de tudo.".
+ Descobri a programação quando tinha 12 anos e fui apresentado ao trio JavaScript, HTML e CSS, fiz os primeiros projetos, mas acabei deixando um pouco de lado, principalmente quando foi apresentado o Python, com algumas funções básicas mas que me deixaram com muita vontade de conhecer mais sobre a programação, principalmente após ouvir a frase: "O mundo da programação é um lugar de infinitas possibilidades onde podemos fazer de tudo.".
   <br>
  Depois de um período entre estudar programação e parar para seguir os estudos regulares, depois de terminar o ensino médio, cursei durante 3 períodos Analise e Desenvolvimento de Sistemas, mas novamente parei os estudos para o serviço militar obrigatório. Durante o período no quartel, tive muito contato com servidores e principalmente com Linux, já que trabalhei na seção de informatica.
   <br>
