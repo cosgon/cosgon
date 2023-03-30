@@ -1,7 +1,7 @@
 ### Sobre mim:
 
 <p>
-Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FrontEnd Junior. 
+Meu nome é Guilherme Gonçalves, sou um Desenvolvedor FullStack. 
   <br>
  Descobri a programação quando tinha 12 anos e fui apresentado ao trio JavaScript, HTML e CSS, fiz os primeiros projetos, mas acabei deixando um pouco de lado, principalmente quando foi apresentado o Python, com algumas funções básicas mas que me deixaram com muita vontade de conhecer mais sobre a programação, principalmente após ouvir a frase: "O mundo da programação é um lugar de infinitas possibilidades onde podemos fazer de tudo.".
   <br>
