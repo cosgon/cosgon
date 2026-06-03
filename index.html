@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cosgon — Guilherme Costa Gonçalves</title>
+  <meta name="description" content="FullStack Developer, DJ & Dad from Curitiba. I code, I vibe, I repeat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07070d;
+      --bg2:       #0e0e1a;
+      --bg3:       #13131f;
+      --border:    rgba(124,58,237,.18);
+      --purple:    #7c3aed;
+      --purple-lt: #a78bfa;
+      --cyan:      #06b6d4;
+      --amber:     #f59e0b;
+      --green:     #10b981;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --card:      rgba(255,255,255,.035);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── scrollbar ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+    /* ─── NAV ───────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(7,7,13,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--purple-lt); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .875rem;
+      font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ──────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* gradient orbs */
+    #hero::before, #hero::after {
+      content: '';
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: .25; pointer-events: none;
+    }
+    #hero::before {
+      width: 600px; height: 600px;
+      background: var(--purple);
+      top: -150px; left: -150px;
+    }
+    #hero::after {
+      width: 500px; height: 500px;
+      background: var(--cyan);
+      bottom: -100px; right: -100px;
+    }
+
+    .hero-inner {
+      max-width: 900px; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem; color: var(--cyan);
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .hero-eyebrow span { color: var(--muted); }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    h1 .accent { color: var(--purple-lt); }
+    h1 .accent2 { color: var(--cyan); }
+
+    .hero-sub {
+      margin-top: 1.25rem;
+      color: var(--muted); font-size: 1.05rem; line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-top: 1.5rem;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .78rem; font-weight: 600;
+      border: 1px solid;
+    }
+    .pill-purple { border-color: var(--purple); color: var(--purple-lt); background: rgba(124,58,237,.12); }
+    .pill-cyan   { border-color: var(--cyan);   color: var(--cyan);       background: rgba(6,182,212,.1); }
+    .pill-amber  { border-color: var(--amber);  color: var(--amber);      background: rgba(245,158,11,.1); }
+    .pill-green  { border-color: var(--green);  color: var(--green);      background: rgba(16,185,129,.1); }
+
+    .hero-cta {
+      display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.5rem; border-radius: 8px;
+      font-size: .9rem; font-weight: 600; text-decoration: none;
+      transition: all .25s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--purple); color: #fff;
+    }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,.35); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--purple-lt); color: var(--purple-lt); transform: translateY(-2px); }
+
+    /* Terminal card on the right */
+    .terminal {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.5);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .75rem 1rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #28c840; }
+    .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); margin-left: .5rem; }
+    .terminal-body { padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; line-height: 1.9; }
+    .t-prompt { color: var(--purple-lt); }
+    .t-cmd    { color: var(--text); }
+    .t-out    { color: var(--muted); }
+    .t-string { color: var(--amber); }
+    .t-key    { color: var(--cyan); }
+    .t-val    { color: var(--green); }
+    .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--cyan); animation: blink 1s step-end infinite; vertical-align: middle; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── SECTION BASE ──────────────────────────── */
+    section { padding: 6rem 2rem; }
+    .section-wrap { max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--purple-lt);
+      margin-bottom: .5rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800; letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc { color: var(--muted); max-width: 560px; font-size: .975rem; }
+
+    /* ─── ABOUT — three pillars ─────────────────── */
+    #about { background: var(--bg2); }
+    .pillars {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .pillar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .pillar:hover { border-color: var(--purple); transform: translateY(-4px); }
+    .pillar-icon { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1; }
+    .pillar h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+    .pillar p  { color: var(--muted); font-size: .875rem; line-height: 1.7; }
+
+    /* ─── PROJECTS ──────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex; flex-direction: column;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .project-card:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(124,58,237,.15);
+    }
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(124,58,237,.12), rgba(6,182,212,.06));
+    }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+    .project-icon  { font-size: 1.75rem; }
+    .project-links { display: flex; gap: .5rem; }
+    .project-link  {
+      width: 32px; height: 32px; border-radius: 6px;
+      display: grid; place-items: center;
+      border: 1px solid var(--border);
+      color: var(--muted); text-decoration: none; font-size: .85rem;
+      transition: all .2s;
+    }
+    .project-link:hover { border-color: var(--purple-lt); color: var(--purple-lt); }
+    .project-name { font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem; }
+    .project-desc { color: var(--muted); font-size: .85rem; line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.25rem; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; padding: .2rem .6rem;
+      border-radius: 4px; background: rgba(124,58,237,.15);
+      color: var(--purple-lt); border: 1px solid rgba(124,58,237,.25);
+    }
+    .tag-cyan  { background: rgba(6,182,212,.12); color: var(--cyan); border-color: rgba(6,182,212,.25); }
+    .tag-amber { background: rgba(245,158,11,.1); color: var(--amber); border-color: rgba(245,158,11,.25); }
+
+    /* ─── STACK ─────────────────────────────────── */
+    #stack { background: var(--bg2); }
+    .stack-groups { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .stack-group h3 { font-size: .8rem; font-weight: 600; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .75rem; }
+    .stack-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .45rem 1rem; border-radius: 8px;
+      font-size: .85rem; font-weight: 500;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); transition: all .2s;
+    }
+    .chip:hover { border-color: var(--purple-lt); color: var(--purple-lt); }
+
+    /* ─── VIBE banner ───────────────────────────── */
+    .vibe-banner {
+      background: linear-gradient(135deg, var(--bg3), rgba(124,58,237,.08));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-top: 4rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 2rem;
+    }
+    .vibe-banner h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .5rem; }
+    .vibe-banner h3 span { color: var(--purple-lt); }
+    .vibe-banner p { color: var(--muted); font-size: .9rem; }
+    .vibe-eq { display: flex; align-items: flex-end; gap: 4px; height: 48px; }
+    .eq-bar {
+      width: 6px; border-radius: 3px;
+      background: linear-gradient(to top, var(--purple), var(--cyan));
+      animation: eq var(--d, .8s) ease-in-out infinite alternate;
+    }
+    @keyframes eq {
+      from { height: 8px; opacity: .4; }
+      to   { height: var(--h, 40px); opacity: 1; }
+    }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-inner { max-width: 1000px; margin: 0 auto; }
+    .footer-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--purple-lt); margin-bottom: .5rem;
+    }
+    .footer-logo span { color: var(--cyan); }
+    .footer-sub { color: var(--muted); font-size: .875rem; margin-bottom: 1.5rem; }
+    .social-links { display: flex; justify-content: center; gap: 1rem; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .5rem 1.25rem; border-radius: 8px;
+      border: 1px solid var(--border); color: var(--muted);
+      text-decoration: none; font-size: .85rem; font-weight: 500;
+      transition: all .2s;
+    }
+    .social-link:hover { border-color: var(--purple-lt); color: var(--purple-lt); }
+    .footer-copy { margin-top: 2rem; color: var(--muted); font-size: .78rem; }
+
+    /* ─── DIVIDER ───────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ─── SCROLL ANIMATIONS ─────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── WAVEFORM DECO ─────────────────────────── */
+    .wave-deco {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: flex-end; gap: 3px;
+      opacity: .2; pointer-events: none;
+    }
+    .wave-bar {
+      width: 4px; border-radius: 2px;
+      background: var(--purple-lt);
+      animation: wave var(--d2,.9s) ease-in-out infinite alternate;
+    }
+    @keyframes wave {
+      from { height: 4px; }
+      to   { height: var(--wh, 24px); }
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillars    { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      nav { padding: .75rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      .vibe-banner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">cos<span>gon</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#stack">stack</a></li>
+      <li><a href="https://github.com/cosgon" target="_blank" rel="noopener">github ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <!-- Left -->
+      <div>
+        <p class="hero-eyebrow"><span>~/</span> cosgon</p>
+        <h1>
+          Guilherme<br/>
+          <span class="accent">Costa</span><br/>
+          <span class="accent2">Gonçalves</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>FullStack Developer</strong> from Curitiba.<br/>
+          I write code by day, spin records by night,<br/>
+          and do both with a baby on my lap.
+        </p>
+        <div class="hero-pills">
+          <span class="pill pill-purple">⌨️ Code</span>
+          <span class="pill pill-cyan">🎧 DJ</span>
+          <span class="pill pill-amber">👶 Dad</span>
+          <span class="pill pill-green">✨ Vibecodr</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="https://github.com/cosgon" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Terminal -->
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="terminal-title">cosgon.json</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <span class="t-out">{</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"name"</span><span class="t-out">:</span> <span class="t-string">"Guilherme Gonçalves"</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"handle"</span><span class="t-out">:</span> <span class="t-string">"@cosgon"</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"role"</span><span class="t-out">:</span> <span class="t-string">"FullStack Dev"</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"location"</span><span class="t-out">:</span> <span class="t-string">"Curitiba 🇧🇷"</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"also"</span><span class="t-out">:</span> [<span class="t-string">"DJ"</span>, <span class="t-string">"Dad"</span>]<span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"vibes"</span><span class="t-out">:</span> <span class="t-val">true</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"openToWork"</span><span class="t-out">:</span> <span class="t-val">true</span><span class="t-out">,</span><br/>
+          &nbsp;&nbsp;<span class="t-key">"coffee"</span><span class="t-out">:</span> <span class="t-string">"always"</span><br/>
+          <span class="t-out">}</span>&nbsp;<span class="t-cursor"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waveform deco -->
+    <div class="wave-deco" aria-hidden="true">
+      <div class="wave-bar" style="--wh:8px;  --d2:.6s"></div>
+      <div class="wave-bar" style="--wh:20px; --d2:.9s"></div>
+      <div class="wave-bar" style="--wh:14px; --d2:.5s"></div>
+      <div class="wave-bar" style="--wh:32px; --d2:.7s"></div>
+      <div class="wave-bar" style="--wh:24px; --d2:1s"></div>
+      <div class="wave-bar" style="--wh:40px; --d2:.8s"></div>
+      <div class="wave-bar" style="--wh:28px; --d2:.55s"></div>
+      <div class="wave-bar" style="--wh:18px; --d2:.95s"></div>
+      <div class="wave-bar" style="--wh:36px; --d2:.65s"></div>
+      <div class="wave-bar" style="--wh:12px; --d2:.75s"></div>
+      <div class="wave-bar" style="--wh:22px; --d2:.85s"></div>
+      <div class="wave-bar" style="--wh:30px; --d2:.7s"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── ABOUT ───────────────────────────────────── -->
+  <section id="about">
+    <div class="section-wrap">
+      <p class="section-label reveal">01 / about</p>
+      <h2 class="reveal">Three sides of me</h2>
+      <p class="section-desc reveal">
+        Developer, artist, father — not in that order. Based in Curitiba,
+        building things that live on the internet and sounds that make people move.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon">⌨️</div>
+          <h3>The Developer</h3>
+          <p>FullStack dev who enjoys the whole stack — from API design to pixel-perfect UIs. I code because it's the closest thing to building worlds from scratch.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">🎧</div>
+          <h3>The DJ</h3>
+          <p>Music has always been in my veins. Playing sets is about reading the room and delivering the right frequency — same energy I bring to shipping software.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">👶</div>
+          <h3>The Dad</h3>
+          <p>Recently entered the best side project of my life. Being a dad taught me patience, creativity under constraints, and that sleep is indeed optional.</p>
+        </div>
+      </div>
+
+      <!-- Vibe banner -->
+      <div class="vibe-banner reveal">
+        <div>
+          <h3>I also <span>vibe</span>code now.</h3>
+          <p>
+            Traditional coding meets AI-assisted flow. I use both — writing logic by hand when precision matters,
+            and letting AI accelerate the vibes when speed and creativity take the wheel.
+            Not one or the other. Both together, always.
+          </p>
+        </div>
+        <div class="vibe-eq" aria-hidden="true">
+          <div class="eq-bar" style="--h:16px; --d:.4s"></div>
+          <div class="eq-bar" style="--h:40px; --d:.7s"></div>
+          <div class="eq-bar" style="--h:28px; --d:.5s"></div>
+          <div class="eq-bar" style="--h:44px; --d:.9s"></div>
+          <div class="eq-bar" style="--h:20px; --d:.6s"></div>
+          <div class="eq-bar" style="--h:36px; --d:.8s"></div>
+          <div class="eq-bar" style="--h:24px; --d:.45s"></div>
+          <div class="eq-bar" style="--h:48px; --d:.75s"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── PROJECTS ────────────────────────────────── -->
+  <section id="projects">
+    <div class="section-wrap">
+      <p class="section-label reveal">02 / projects</p>
+      <h2 class="reveal">Things I've shipped</h2>
+      <p class="section-desc reveal">
+        From cultural art events to utility apps — each project is a snapshot of where my head was at the time.
+      </p>
+
+      <div class="projects-grid">
+
+        <!-- FEATURED: Bienal -->
+        <div class="project-card featured reveal">
+          <div class="project-header">
+            <span class="project-icon">🎨</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Bienal Internacional de Curitiba</div>
+          <div class="project-desc">
+            Digital presence for Curitiba's most celebrated international art biennal. 
+            A project at the intersection of culture, visual storytelling and web — bringing one of Brazil's 
+            biggest art events to the digital world with crafted UI and solid architecture.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Frontend</span>
+            <span class="tag tag-cyan">Art & Culture</span>
+            <span class="tag tag-amber">Curitiba</span>
+          </div>
+        </div>
+
+        <!-- Curitiba Art Week -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🖼️</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon/curitiba-art-week" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Curitiba Art Week</div>
+          <div class="project-desc">
+            Website for the Curitiba Art Week event — a week dedicated to celebrating art and creativity in the city.
+            Built with HTML, CSS and a whole lot of cultural pride.
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-amber">HTML</span>
+            <span class="tag tag-cyan">Art & Culture</span>
+          </div>
+        </div>
+
+        <!-- Mesacheia -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🍽️</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon/mesacheia" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Mesacheia</div>
+          <div class="project-desc">
+            A TypeScript application for restaurant or queue management. Experimenting with typed architecture and real-world UX patterns.
+          </div>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">UX</span>
+          </div>
+        </div>
+
+        <!-- Cyber Atletas -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🕹️</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon/cyber-atletas" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Cyber Atletas</div>
+          <div class="project-desc">
+            A JavaScript project diving into the esports/gaming space. Athletes, data, and interactive interfaces.
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-amber">JavaScript</span>
+            <span class="tag">Esports</span>
+          </div>
+        </div>
+
+        <!-- Game of Chance React -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">🎲</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon/game-of-chance-react" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Game of Chance (React)</div>
+          <div class="project-desc">
+            Probability game built with React. A fun exploration of state management and interactive UI — because sometimes, life's a gamble.
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-cyan">React</span>
+            <span class="tag tag-amber">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Grade Calculator -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-icon">📐</span>
+            <div class="project-links">
+              <a href="https://github.com/cosgon/gradeCalculator" target="_blank" rel="noopener" class="project-link" title="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-name">Grade Calculator</div>
+          <div class="project-desc">
+            Simple, useful, no nonsense. A JavaScript tool for calculating academic grades — the kind of utility project that shows you understand the fundamentals.
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-amber">JavaScript</span>
+            <span class="tag">Utility</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── STACK ───────────────────────────────────── -->
+  <section id="stack">
+    <div class="section-wrap">
+      <p class="section-label reveal">03 / stack</p>
+      <h2 class="reveal">Tools of the trade</h2>
+      <p class="section-desc reveal">
+        Languages, frameworks and tools I reach for when building — by hand or with AI.
+      </p>
+
+      <div class="stack-groups">
+        <div class="stack-group reveal">
+          <h3>Frontend</h3>
+          <div class="stack-chips">
+            <span class="chip">⚛️ React</span>
+            <span class="chip">🔷 TypeScript</span>
+            <span class="chip">🌐 HTML</span>
+            <span class="chip">🎨 CSS</span>
+            <span class="chip">🟨 JavaScript</span>
+          </div>
+        </div>
+        <div class="stack-group reveal">
+          <h3>Backend</h3>
+          <div class="stack-chips">
+            <span class="chip">🟢 Node.js</span>
+            <span class="chip">🐍 Python</span>
+            <span class="chip">🦄 Gunicorn</span>
+            <span class="chip">🗄️ REST APIs</span>
+            <span class="chip">📦 JSON Server</span>
+          </div>
+        </div>
+        <div class="stack-group reveal">
+          <h3>Tools & workflow</h3>
+          <div class="stack-chips">
+            <span class="chip">🐙 Git / GitHub</span>
+            <span class="chip">🐳 Docker</span>
+            <span class="chip">💜 VS Code</span>
+            <span class="chip">✨ AI / Copilot</span>
+            <span class="chip">🎧 Good music</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">cos<span>gon</span></div>
+      <p class="footer-sub">Guilherme Costa Gonçalves · FullStack Dev · DJ · Dad · Curitiba 🇧🇷</p>
+      <div class="social-links">
+        <a href="https://github.com/cosgon" target="_blank" rel="noopener" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          github.com/cosgon
+        </a>
+      </div>
+      <p class="footer-copy">Built with code, vibes & coffee &nbsp;·&nbsp; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav shrink on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 40 ? '.6rem 2rem' : '1rem 2rem';
+    }, { passive: true });
+
+    // Random waveform heights on load
+    document.querySelectorAll('.wave-bar').forEach(bar => {
+      const h = Math.floor(Math.random() * 32) + 8;
+      bar.style.setProperty('--wh', h + 'px');
+    });
+  </script>
+</body>
+</html>
