@@ -1,60 +1,4 @@
-
-<div align="center">
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 160" width="860" height="160">
-  <defs>
-    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#7c3aed"/>
-      <stop offset="50%"  stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
-    </linearGradient>
-    <linearGradient id="g2" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%"  stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#06b6d4"/>
-    </linearGradient>
-    <style>
-      .bar { fill: url(#g2); }
-      .b1 { animation: eq .6s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b2 { animation: eq .9s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b3 { animation: eq .5s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b4 { animation: eq .8s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b5 { animation: eq .65s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b6 { animation: eq 1s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b7 { animation: eq .7s ease-in-out infinite alternate; transform-origin: center bottom; }
-      .b8 { animation: eq .55s ease-in-out infinite alternate; transform-origin: center bottom; }
-      @keyframes eq { from { transform: scaleY(.15); } to { transform: scaleY(1); } }
-      .title { font-family: monospace; font-weight: 900; font-size: 42px; fill: url(#g1); letter-spacing: -1px; }
-      .sub   { font-family: monospace; font-size: 14px; fill: #64748b; letter-spacing: 3px; }
-      .handle{ font-family: monospace; font-size: 13px; fill: #a78bfa; }
-    </style>
-  </defs>
-  <rect width="860" height="160" fill="#07070d" rx="12"/>
-  <g transform="translate(40,30)">
-    <rect class="bar b1" x="0"  y="0" width="10" height="100" rx="3"/>
-    <rect class="bar b2" x="16" y="0" width="10" height="80"  rx="3"/>
-    <rect class="bar b3" x="32" y="0" width="10" height="100" rx="3"/>
-    <rect class="bar b4" x="48" y="0" width="10" height="60"  rx="3"/>
-    <rect class="bar b5" x="64" y="0" width="10" height="90"  rx="3"/>
-    <rect class="bar b6" x="80" y="0" width="10" height="100" rx="3"/>
-  </g>
-  <text x="430" y="82"  text-anchor="middle" class="title">cosgon</text>
-  <text x="430" y="106" text-anchor="middle" class="sub">FULLSTACK DEV  ·  DJ POT4S  ·  DAD</text>
-  <text x="430" y="128" text-anchor="middle" class="handle">#!/usr/bin/env vibe --with-coffee</text>
-  <g transform="translate(706,30)">
-    <rect class="bar b5" x="0"  y="0" width="10" height="90"  rx="3"/>
-    <rect class="bar b7" x="16" y="0" width="10" height="100" rx="3"/>
-    <rect class="bar b8" x="32" y="0" width="10" height="70"  rx="3"/>
-    <rect class="bar b2" x="48" y="0" width="10" height="100" rx="3"/>
-    <rect class="bar b4" x="64" y="0" width="10" height="50"  rx="3"/>
-    <rect class="bar b1" x="80" y="0" width="10" height="85"  rx="3"/>
-  </g>
-</svg>
-
-</div>
-
----
-
-## 👋 hey, i'm guilherme
+# 👋 hey, i'm guilherme
 
 fullstack dev from curitiba 🇧🇷 — i write code, spin records as **dj pot4s** and recently started the most challenging side project of my life: being a dad 👶
 
@@ -142,10 +86,8 @@ i also **vibecode** — part craft, part AI, fully intentional. call it what you
 |---|---------|-----------|----------------|
 | 01 | [🎨 bienal internacional de curitiba](https://16bienaldecuritiba.org/) | digital presence for curitiba's biggest international art event | 110 — smooth and cultural |
 | 02 | [🖼️ curitiba-art-week](https://github.com/cosgon/curitiba-art-week) | website for curitiba's art week event | 95 — laid back culture drop |
-| 03 | [🍽️ mesacheia](https://github.com/cosgon/mesacheia) | typescript app for restaurant/queue management | 128 — peak hour energy |
+| 03 | [🧝 mesacheia](https://github.com/cosgon/mesacheia) | typescript app for RPG | 128 — peak hour energy |
 | 04 | [🕹️ cyber-atletas](https://github.com/cosgon/cyber-atletas) | esports interactive js interface | 140 — full send |
-| 05 | [🎲 game-of-chance-react](https://github.com/cosgon/game-of-chance-react) | probability game built with react | 125 — house drop |
-| 06 | [📐 gradecalculator](https://github.com/cosgon/gradeCalculator) | simple grade utility — pure fundamentals | 90 — warmup set |
 
 ---
 
