@@ -89,17 +89,6 @@ i also **vibecode** — part craft, part AI, fully intentional. call it what you
 | 03 | [🧝 mesacheia](https://github.com/cosgon/mesacheia) | typescript app for RPG | 128 — peak hour energy |
 | 04 | [🕹️ cyber-atletas](https://github.com/cosgon/cyber-atletas) | esports interactive js interface | 140 — full send |
 
----
-
-## 📊 stats
-
-<div align="center">
-
-![cosgon's GitHub stats](https://github-readme-stats.vercel.app/api?username=cosgon&show_icons=true&theme=tokyonight&hide_border=true&bg_color=07070d&title_color=a78bfa&icon_color=06b6d4&text_color=e2e8f0)
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cosgon&layout=compact&theme=tokyonight&hide_border=true&bg_color=07070d&title_color=a78bfa&text_color=e2e8f0)
-
-</div>
 
 ---
 
